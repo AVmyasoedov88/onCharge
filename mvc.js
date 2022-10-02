@@ -1,11 +1,33 @@
-import onChange from ('on-change')
+import onChange from 'on-change';
 
-const foo = onChange({
-	a: 0,
-	b: 0
-}, () => save(foo));
+function app() {
+	const state = {
+		value: 0,
+	};
 
+	const result = document.getElementById('result');
 
+	const watchedState = onChange(
+		state,
+		(path, value) => {
+			console.log(path)
+			result.textContent = value;
+		}
+	);
 
-foo.a = 3;
-console.log(foo)
+	const incHandler = () => {
+		watchedState.value += 1;
+	};
+
+	const decHandler = () => {
+		watchedState.value -= 1;
+	};
+
+	const inc = document.getElementById('increment');
+	inc.addEventListener('click', incHandler);
+
+	const dec = document.getElementById('decrement');
+	dec.addEventListener('click', decHandler);
+}
+  
+  app();
