@@ -31,3 +31,5 @@ function app() {
 }
   
   app();
+
+  console.log("Hello")
