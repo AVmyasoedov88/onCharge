@@ -34,8 +34,3 @@ function app() {
 }
   
   app();
-
-  const div = document.createElement('div')
-  div.append('Херня')
-  const body = document.querySelector('body')
-  body.append(div)
