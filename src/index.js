@@ -1,1 +1,41 @@
-console.log("Hello World!");
+import onChange from 'on-change'
+
+
+console.log('Herny')
+
+function app() {
+	const state = {
+		value: 0,
+	};
+
+	const result = document.getElementById('result');
+
+	const watchedState = onChange(
+		state,
+		(path, value) => {
+			console.log(path)
+			result.textContent = value;
+		}
+	);
+
+	const incHandler = () => {
+		watchedState.value += 1;
+	};
+
+	const decHandler = () => {
+		watchedState.value -= 1;
+	};
+
+	const inc = document.getElementById('increment');
+	inc.addEventListener('click', incHandler);
+
+	const dec = document.getElementById('decrement');
+	dec.addEventListener('click', decHandler);
+}
+  
+  app();
+
+  const div = document.createElement('div')
+  div.append('Херня')
+  const body = document.querySelector('body')
+  body.append(div)
